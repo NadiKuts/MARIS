@@ -1,0 +1,14 @@
+{
+  "name": "openlayers",
+  "homepage": "https://github.com/openlayers/openlayers",
+  "_release": "ba4623ef51",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ba4623ef515fffb92b0324398f3001eb34c0b82b"
+  },
+  "_source": "git://github.com/openlayers/openlayers.git",
+  "_target": "*",
+  "_originalSource": "openlayers",
+  "_direct": true
+}

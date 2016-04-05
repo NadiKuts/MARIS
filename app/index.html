@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="maris" class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MARIS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="../bower_components/angular-material-icons/angular-material-icons.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel='stylesheet' href="../bower_components/angular-material-data-table/dist/md-data-table.css">
+    <link rel="stylesheet" href="../bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel='stylesheet' href='../bower_components/angular.treeview/css/angular.treeview.css'>
+    <!--<link rel='stylesheet' href='angular-bootstrap-nav-tree/dist/abn_tree.css'>-->
+
+    <link rel='stylesheet' href='../bower_components/openlayers3/build/ol.css'>
+
+
+    <link rel="stylesheet" href="app.css">
+    <script src="../bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+    <md-toolbar id="navbar" ng-controller="SidenavCtrl" ng-app="MyApp">
+        <div ng-controller="RESTgeo" class="md-toolbar-tools">
+            <h2>
+                <span>Mara Rangeland Information System (MARIS)</span>
+            </h2>
+            <img class="logo" src='images/logo.png'>
+            
+            <md-button class="md-icon-button" ng-click="toggleRight()" ng-hide="isOpenRight()" aria-label="More">
+                <i class="material-icons">menu</i>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <section layout="column" flex="">
+        <md-sidenav class="md-sidenav-right" md-component-id="right">
+            <md-toolbar ng-controller="RightCtrl" class="md-theme-light">
+                <md-button class="md-toolbar-tools" ng-click="close()">Menu</md-button>
+            </md-toolbar>
+            <md-content layout-padding="">
+                <form>
+                    <md-button class="md-primary">
+                        Livestock price
+                    </md-button>
+                    <br>
+                    <md-button class="md-primary">
+                        Insurance
+                    </md-button>
+                    <br>
+                    <md-button class="md-primary">
+                        Live rainfall map
+                    </md-button>
+                    <br>
+                    <md-button class="md-primary">
+                        Live biomass map
+                    </md-button>
+                    <br>
+                    <md-button class="md-primary">
+                        Cattle market-price
+                    </md-button>
+                </form>
+            </md-content>
+        </md-sidenav>
+    </section>
+
+    <div class="sub">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="images/img1.jpg">
+                </div>
+                <div class="item">
+                    <img src="images/img2.jpg">
+                </div>
+                <div class="item">
+                    <img src="images/img3.jpg">
+                </div>
+                <div class="item">
+                    <img src="images/img4.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="view" ng-view></div>
+
+
+    <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="../bower_components/angular-material/angular-material.min.js"></script>
+    <script src="../bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="../bower_components/angular-material-data-table/dist/md-data-table.js"></script>
+    <script src="../bower_components/angular.treeview/angular.treeview.js"></script>
+    <script src="../bower_components/openlayers3/build/ol.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="../bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
+
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+    <script src="../bower_components/proj4/dist/proj4.js"></script>
+    <script src="http://epsg.io/21036.js"></script>
+
+    <script src="app.js"></script>
+    <script src="js/controllers/controllers.js"></script>
+    <script src="js/services/services.js"></script>
+
+</body>
+
+</html>

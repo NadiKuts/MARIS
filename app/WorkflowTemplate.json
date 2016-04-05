@@ -1,0 +1,375 @@
+{
+    "subworkflows": [
+        {
+            "id": 0,
+            "metadata": {
+                "longName": "PRODUCTION",
+                "description": "The workflow for the MaMaSe project",
+                "syntax": "MaMaSeWorkflow(raster,raster,raster,raster)",
+                "resource": "Ilwis",
+                "keywords": "workflow, MaMaSe, drainage",
+                "inputParameterCount": 4,
+                "outputParameterCount": 2
+            },
+            "operations": [
+                {
+                    "id": 0,
+                    "metadata": {
+                        "longName": "Anoperation",
+                        "description": "AnOperationDescription ",
+                        "syntax": "thefirstoperation(inputrastermap)",
+                        "resource": "Ilwis",
+                        "keywords": "operation, keyword,operation",
+                        "inputParameterCount": 1,
+                        "outputParameterCount": 1,
+                        "final": false
+                    },
+                    "inputs": [
+                        {
+                            "id": 0,
+                            "url": "veg.com",
+                            "term": "",
+                            "type": "map",
+                            "value": "",
+                            "units": "",
+                            "min": "",
+                            "max": "",
+                            "name": "Vegetation structure",
+                            "show": true,
+                            "change": true,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "outputs": [
+                        {
+                            "id": 0,
+                            "url": "grass.com",
+                            "term": "",
+                            "type": "map",
+                            "name": "Grass cover map",
+                            "show": true,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "connections": []
+    },
+                {
+                    "id": 1,
+                    "metadata": {
+                        "longName": "AFunctionalOperation",
+                        "description": "a functional operation",
+                        "syntax": "afunctionaloperation(inputrastermap)",
+                        "resource": "Ilwis",
+                        "keywords": "operation, raster, modify",
+                        "inputParameterCount": 1,
+                        "outputParameterCount": 1,
+                        "final": false
+                    },
+                    "inputs": [
+                        {
+                            "id": 0,
+                            "url": "rainfallData.com",
+                            "term": "",
+                            "type": "map",
+                            "value": "",
+                            "units": "",
+                            "min": "",
+                            "max": "",
+                            "name": "Rainfall data",
+                            "show": true,
+                            "change": true,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "outputs": [
+                        {
+                            "id": 0,
+                            "url": "http://130.89.221.193:85/geoserver/test/wms?service=WMS&version=1.1.0&request=GetMap&layers=test:Rainfall%20map&styles=&bbox=696275.4,9797373.370000001,813775.4,9885123.370000001&width=768&height=573&srs=EPSG:21036&format=application/openlayers",
+                            "term": "",
+                            "type": "map",
+                            "name": "Rainfall map",
+                            "show": true,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "connections": []
+    },
+                {
+                    "id": 2,
+                    "metadata": {
+                        "longName": "AFunctionalOperation",
+                        "description": "a functional operation",
+                        "syntax": "afunctionaloperation(inputrastermap)",
+                        "resource": "Ilwis",
+                        "keywords": "operation, raster, modify",
+                        "inputParameterCount": 1,
+                        "outputParameterCount": 1,
+                        "final": false
+                    },
+                    "inputs": [
+                        {
+                            "id": 0,
+                            "url": "dtm.com",
+                            "term": "",
+                            "type": "map",
+                            "value": "",
+                            "units": "",
+                            "min": "",
+                            "max": "",
+                            "name": "Digital terrain map",
+                            "show": true,
+                            "change": true,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "outputs": [
+                        {
+                            "id": 0,
+                            "url": "http://130.89.221.193:85/geoserver/test/wms?service=WMS&version=1.1.0&request=GetMap&layers=test:Slope%20map&styles=&bbox=696275.4,9797373.370000001,813775.4,9885123.370000001&width=768&height=573&srs=EPSG:21036&format=application/openlayers",
+                            "term": "",
+                            "type": "map",
+                            "name": "Slope map",
+                            "show": true,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "connections": []
+    },
+                {
+                    "id": 3,
+                    "metadata": {
+                        "longName": "AFunctionalOperation",
+                        "description": "a functional operation",
+                        "syntax": "afunctionaloperation(inputrastermap)",
+                        "resource": "Ilwis",
+                        "keywords": "operation, raster, modify",
+                        "inputParameterCount": 1,
+                        "outputParameterCount": 1,
+                        "final": false
+                    },
+                    "inputs": [
+                        {
+                            "id": 0,
+                            "url": "slope.com",
+                            "term": "",
+                            "type": "map",
+                            "value": "",
+                            "units": "",
+                            "min": "",
+                            "max": "",
+                            "name": "Slope map",
+                            "show": true,
+                            "change": true,
+                            "description": "",
+                            "picture": ""
+        },
+                        {
+                            "id": 1,
+                            "url": "soil.com",
+                            "term": "",
+                            "type": "map",
+                            "value": "",
+                            "units": "",
+                            "min": "",
+                            "max": "",
+                            "name": "Soil map",
+                            "show": true,
+                            "change": true,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "outputs": [
+                        {
+                            "id": 0,
+                            "url": "rem.com",
+                            "term": "",
+                            "type": "map",
+                            "name": "Rainfall efficiency map",
+                            "show": true,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "connections": [
+                        {
+                            "fromOperationId": 2,
+                            "fromParameterId": 0,
+                            "toOperationId": 3,
+                            "toParameterId": 0
+        }
+                    ]
+    },
+                {
+                    "id": 4,
+                    "metadata": {
+                        "longName": "AFunctionalOperation",
+                        "description": "a functional operation",
+                        "syntax": "afunctionaloperation(inputrastermap)",
+                        "resource": "Ilwis",
+                        "keywords": "operation, raster, modify",
+                        "inputParameterCount": 4,
+                        "outputParameterCount": 1,
+                        "final": true
+                    },
+                    "inputs": [
+                        {
+                            "id": 0,
+                            "url": "grass.com",
+                            "term": "",
+                            "type": "map",
+                            "value": "",
+                            "units": "",
+                            "min": "",
+                            "max": "",
+                            "name": "Grass cover map",
+                            "show": true,
+                            "change": true,
+                            "description": "",
+                            "picture": ""
+        },
+                        {
+                            "id": 1,
+                            "url": "http://130.89.221.193:85/geoserver/test/wms?service=WMS&version=1.1.0&request=GetMap&layers=test:Rainfall%20map&styles=&bbox=696275.4,9797373.370000001,813775.4,9885123.370000001&width=768&height=573&srs=EPSG:21036&format=application/openlayers",
+                            "term": "",
+                            "type": "map",
+                            "value": "",
+                            "units": "",
+                            "min": "",
+                            "max": "",
+                            "name": "Rainfall map",
+                            "show": true,
+                            "change": true,
+                            "description": "",
+                            "picture": ""
+        },
+                        {
+                            "id": 2,
+                            "url": "rem.com",
+                            "term": "",
+                            "type": "map",
+                            "value": "",
+                            "units": "",
+                            "min": "",
+                            "max": "",
+                            "name": "Rainfall efficiency map",
+                            "show": true,
+                            "change": true,
+                            "description": "",
+                            "picture": ""
+        },
+                        {
+                            "id": 3,
+                            "url": "",
+                            "term": "",
+                            "type": "value",
+                            "value": 67,
+                            "units": "%",
+                            "min": "0",
+                            "max": "100",
+                            "name": "Palatability factor",
+                            "show": true,
+                            "change": true,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "outputs": [
+                        {
+                            "id": 0,
+                            "url": "http://130.89.221.193:85/geoserver/test/wms?service=WMS&version=1.1.0&request=GetMap&layers=test:Peak%20standing%20crop&styles=&bbox=696275.4,9797373.370000001,813775.4,9885123.370000001&width=768&height=573&srs=EPSG:21036&format=application/openlayers",
+                            "term": "",
+                            "type": "map",
+                            "name": "Peak standing crop",
+                            "show": true,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "connections": [
+                        {
+                            "fromOperationId": 0,
+                            "fromParameterId": 0,
+                            "toOperationId": 4,
+                            "toParameterId":0
+        },
+                        {
+                            "fromOperationId": 1,
+                            "fromParameterId": 0,
+                            "toOperationId": 4,
+                            "toParameterId": 1
+        },
+                        {
+                            "fromOperationId": 3,
+                            "fromParameterId": 0,
+                            "toOperationId": 4,
+                            "toParameterId": 2
+        }
+      ]
+    }
+  ]
+},
+        {
+            "id": 1,
+            "metadata": {
+                "longName": "SUITABILITY",
+                "description": "The workflow for the MaMaSe project",
+                "syntax": "MaMaSeWorkflow(raster,raster,raster,raster)",
+                "resource": "Ilwis",
+                "keywords": "workflow, MaMaSe, drainage",
+                "inputParameterCount": 1,
+                "outputParameterCount": 1
+            },
+            "operations": [
+                {
+                    "id": 0,
+                    "metadata": {
+                        "longName": "Anoperation",
+                        "description": "AnOperationDescription ",
+                        "syntax": "thefirstoperation(inputrastermap)",
+                        "resource": "Ilwis",
+                        "keywords": "operation, keyword,operation",
+                        "inputParameterCount": 1,
+                        "outputParameterCount": 1,
+                        "final": true
+                    },
+                    "inputs": [
+                        {
+                            "id": 0,
+                            "url": "1input1.com",
+                            "term": "",
+                            "type": "map",
+                            "value": "",
+                            "units": "",
+                            "min": "",
+                            "max": "",
+                            "name": "1_input1",
+                            "optional": false,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "outputs": [
+                        {
+                            "id": 0,
+                            "url": "1output1.com",
+                            "term": "",
+                            "type": "map",
+                            "name": "1_output1",
+                            "optional": false,
+                            "description": "",
+                            "picture": ""
+        }
+      ],
+                    "connections": []
+    }
+  ]
+}
+]
+}
