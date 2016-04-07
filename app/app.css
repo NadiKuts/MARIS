@@ -42,6 +42,36 @@ img {
     margin-bottom: -2%;
 }
 
+/* login.html */
+
+md-dialog {
+    width: 30%;
+    height: auto;
+    text-align: center;
+}
+md-dialog-content {
+    width: 100%;
+}
+#startForm, 
+#regFormContent,
+#loginFormContent {
+    text-align: center;
+    width: 100%;
+}
+#regFormAct,
+#loginFormAct { 
+    width: 100%;
+}
+
+.reglog {
+    width: 100%;
+    margin: 15px;
+}
+.reglogConfirm {
+    width: 40%;
+}
+
+
 /* workflow.html */
 md-content {
   background-color: transparent !important;

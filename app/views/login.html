@@ -1,0 +1,95 @@
+/*
+Registration form. All functions for registration and login procedure should be in file "controllers.js" --> especially inside of controller "logInCtrl"
+*/
+
+
+<md-dialog ng-controller="logInCtrl">
+    <form layout="column" layout-align="center start">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Get access</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <i class="material-icons">ic_close</i>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content layout="column" layout-align="center center" ng-hide="showLogin" ng-show="!showRegistration">
+            <div id="startForm" layout="row" layout-align="center center">
+                <md-button md-no-ink class="md-primary reglog" ng-click="showLogin = ! showLogin">
+                    Log in
+                </md-button>
+                <md-button md-no-ink class="md-primary reglog" ng-click="showRegistration = ! showRegistration">
+                    Register
+                </md-button>
+            </div>
+        </md-dialog-content>
+        <md-dialog-content layout="column" layout-align="center center" id="regFormContent" ng-show="showRegistration" ng-hide="!showRegistration">
+            <div layout-gt-xs="row">
+                <md-input-container>
+                    <label>First Name</label>
+                    <input ng-model="user.firstname">
+                </md-input-container>
+                <md-input-container>
+                    <label>Last Name</label>
+                    <input ng-model="user.lastname">
+                </md-input-container>
+            </div>
+            <div layout-gt-xs="row">
+                <md-input-container>
+                    <label>Company</label>
+                    <input ng-model="user.company">
+                </md-input-container>
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="user.email" type="email">
+                </md-input-container>
+            </div>
+            <div layout-gt-xs="row">
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="user.password" type="password">
+                </md-input-container>
+                <md-input-container>
+                    <label>Confirm password</label>
+                    <input ng-model="user.confirmPass" type="password">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-content layout="column" layout-align="center center" id="loginFormContent" ng-show="showLogin" ng-hide="!showLogin">
+            <div layout="column" layout-align="center start">
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="user.email" type="email">
+                </md-input-container>
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="user.password" type="password">
+                </md-input-container>
+            </div>
+
+        </md-dialog-content>
+        <md-dialog-actions id="loginFormAct" layout="row" layout-align="space-between center" ng-show="showRegistration">
+            <md-button class="md-icon-button md-primary" ng-click="showRegistration=!showRegistration">
+                <i class="material-icons">arrow_back</i>
+                <md-tooltip>Back</md-tooltip>
+            </md-button>
+            
+            /* Here in ng-click should be a function for registration */
+            <md-button class="md-raised md-primary reglogConfirm" ng-click="">
+                Register now
+            </md-button>
+        </md-dialog-actions>
+        <md-dialog-actions id="regFormAct" layout="row" layout-align="space-between center" ng-show="showLogin">
+            <md-button class="md-icon-button md-primary" ng-click="showLogin=!showLogin">
+                <i class="material-icons">arrow_back</i>
+                <md-tooltip>Back</md-tooltip>
+            </md-button>
+            
+            /* Here in ng-click should be a function for login */
+            <md-button class="md-raised md-primary reglogConfirm" ng-click="">
+                Log in
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

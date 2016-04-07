@@ -1,5 +1,44 @@
 var controllers = angular.module('maris');
 
+
+controllers.controller('logInCtrl', ['$scope', '$log', '$http', '$mdDialog', '$mdMedia', function ($scope, $log, $http, $mdDialog, $mdMedia){
+    
+    $scope.showLogIn = function (ev) {
+        $mdDialog.show({
+            controller: WordController,
+            templateUrl: 'views/login.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+        });
+    };
+    
+
+        
+}]);
+
+function WordController($scope, $rootScope, $mdDialog, $timeout, $route, $http) {
+
+    /*$scope.user = {};
+    $scope.new.level = 0;*/
+
+    $scope.logIn = function () {
+        /*API.getProfile("Alex").success(function (data) {
+
+            data.words.push($scope.new);
+            API.updateProfile("Alex", data).success(function (data) {
+                console.log(data);
+            });
+            $mdDialog.cancel();
+        });*/
+    };
+    $scope.newUser = function () {
+        
+    };
+};
+
+
+
 controllers.controller('testCtrl', ['$scope', '$log', '$http', 'ModelData', 'workspaces', function ($scope, $log, $http, ModelData, olData) {
     ModelData.getData().success(function (data) {
 
