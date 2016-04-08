@@ -1,5 +1,5 @@
 <!--
-Registration form. All functions for registration and login procedure should be in file "controllers.js" -> especially inside of controller "logInCtrl"
+Registration form. All functions for registration and login procedure should be in file "controllers.js" especially inside of controller "logInCtrl"
 -->
 
 
@@ -28,31 +28,31 @@ Registration form. All functions for registration and login procedure should be 
             <div layout-gt-xs="row">
                 <md-input-container>
                     <label>First Name</label>
-                    <input ng-model="user.firstname">
+                    <input ng-model="userInfo.firstname" type="text">
                 </md-input-container>
                 <md-input-container>
                     <label>Last Name</label>
-                    <input ng-model="user.lastname">
+                    <input ng-model="userInfo.lastname" type="text">
                 </md-input-container>
             </div>
             <div layout-gt-xs="row">
                 <md-input-container>
                     <label>Company</label>
-                    <input ng-model="user.company">
+                    <input ng-model="userInfo.company" type="text">
                 </md-input-container>
                 <md-input-container>
                     <label>Email</label>
-                    <input ng-model="user.email" type="email">
+                    <input ng-model="userInfo.email" type="email">
                 </md-input-container>
             </div>
             <div layout-gt-xs="row">
                 <md-input-container>
                     <label>Password</label>
-                    <input ng-model="user.password" type="password">
+                    <input ng-model="userInfo.password" type="password">
                 </md-input-container>
                 <md-input-container>
                     <label>Confirm password</label>
-                    <input ng-model="user.confirmPass" type="password">
+                    <input ng-model="userInfo.confirmPass" type="password">
                 </md-input-container>
             </div>
         </md-dialog-content>
@@ -60,11 +60,11 @@ Registration form. All functions for registration and login procedure should be 
             <div layout="column" layout-align="center start">
                 <md-input-container>
                     <label>Email</label>
-                    <input ng-model="user.email" type="email">
+                    <input ng-model="loginInfo.email" type="email">
                 </md-input-container>
                 <md-input-container>
                     <label>Password</label>
-                    <input ng-model="user.password" type="password">
+                    <input ng-model="loginInfo.password" type="password">
                 </md-input-container>
             </div>
 
@@ -76,7 +76,7 @@ Registration form. All functions for registration and login procedure should be 
             </md-button>
             
             <!-- Here in ng-click should be a function for registration -->
-            <md-button class="md-raised md-primary reglogConfirm" ng-click="">
+            <md-button class="md-raised md-primary reglogConfirm" ng-click="register()">
                 Register now
             </md-button>
         </md-dialog-actions>
@@ -86,8 +86,8 @@ Registration form. All functions for registration and login procedure should be 
                 <md-tooltip>Back</md-tooltip>
             </md-button>
             
-        <!--Here in ng-click should be a function for login -->
-            <md-button class="md-raised md-primary reglogConfirm" ng-click="">
+            <!-- Here in ng-click should be a function for login -->
+            <md-button class="md-raised md-primary reglogConfirm" ng-click="logIn()">
                 Log in
             </md-button>
         </md-dialog-actions>

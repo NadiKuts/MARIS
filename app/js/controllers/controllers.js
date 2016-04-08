@@ -17,25 +17,80 @@ controllers.controller('logInCtrl', ['$scope', '$log', '$http', '$mdDialog', '$m
         
 }]);
 
-function WordController($scope, $rootScope, $mdDialog, $timeout, $route, $http) {
+function WordController($scope,  $http) {
 
-    /*$scope.user = {};
-    $scope.new.level = 0;*/
+    //Login Variables
+	$scope.loginInfo = {
+		email : undefined,
+		password : undefined
+	};
 
-    $scope.logIn = function () {
-        /*API.getProfile("Alex").success(function (data) {
 
-            data.words.push($scope.new);
-            API.updateProfile("Alex", data).success(function (data) {
-                console.log(data);
-            });
-            $mdDialog.cancel();
-        });*/
-    };
-    $scope.newUser = function () {
+	
+	//functions
+	$scope.logIn = function () {
+		var data = {
+			email : $scope.loginInfo.email,
+			password : $scope.loginInfo.password
+		};
+		$http.post("models/login.php", data).success(function(response){
+            if(response != 0){
+                //Login Successfull.
+                //Close the login dialog
+                //Relocate to an authorised page
+
+                console.log(response);
+                localStorage.setItem("user", JSON.stringify({user : response[0].name}));
+            }else{
+                //Notify user of wrong login details
+                console.log("Not Logged In");
+            }
+			
+
+		}).error(function(error){
+			console.error(error);
+		});
         
     };
+	//Init
+
+    //New User Info
+    $scope.userInfo = {
+        firstname : undefined,
+        lastname : undefined,
+        company : undefined,
+        email : undefined,
+        password : undefined,
+        confirmPass : undefined
+    };
+
+    //function
+    $scope.register = function () {
+        var data = {
+            firstname : $scope.userInfo.firstname,
+            lastname : $scope.userInfo.lastname,
+            company : $scope.userInfo.company,
+            email : $scope.userInfo.email,
+            password : $scope.userInfo.password,
+            confirmPass : $scope.userInfo.confirmPass
+        };
+        $http.post("models/register.php", data).success(function(response){
+            if(response == 1){
+                //Successfull Registration
+                //Close the Registration Dialog
+            }else{
+                //Unsuccessful registration
+                //Inform user to try again
+            }
+            console.log(response);
+
+        }).error(function(error){
+            console.error(error);
+        });
+    };
 };
+
+
 
 
 
@@ -313,7 +368,7 @@ controllers.controller('DBCtrl', ['$scope', '$http', function ($scope, $http) {
     // controller code goes here
     // Get data from table
     $scope.data = [];
-    $http.get('http://localhost:3000/api/v1/statictables')
+    $http.get('http://130.89.221.193:3000/api/v1/statictables')
         .success(function (data) {
             $scope.tableRows = data;
             console.log($scope.tableRows);
