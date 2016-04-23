@@ -46,6 +46,7 @@ img {
 
 md-dialog {
     width: 30%;
+    min-width: 200px;
     height: auto;
     text-align: center;
 }
@@ -70,7 +71,11 @@ md-dialog-content {
 .reglogConfirm {
     width: 40%;
 }
-
+#message {
+    color: #3F51B5;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
 
 /* workflow.html */
 md-content {

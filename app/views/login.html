@@ -10,8 +10,10 @@ Registration form. All functions for registration and login procedure should be 
                 <h2>Get access</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
-                    <i class="material-icons">ic_close</i>
+                    <i class="material-icons">cancel</i>
+                    <md-tooltip>Cancel</md-tooltip>
                 </md-button>
+
             </div>
         </md-toolbar>
         <md-dialog-content layout="column" layout-align="center center" ng-hide="showLogin" ng-show="!showRegistration">
@@ -55,6 +57,7 @@ Registration form. All functions for registration and login procedure should be 
                     <input ng-model="userInfo.confirmPass" type="password">
                 </md-input-container>
             </div>
+            <span id="message">{{message}}</span>
         </md-dialog-content>
         <md-dialog-content layout="column" layout-align="center center" id="loginFormContent" ng-show="showLogin" ng-hide="!showLogin">
             <div layout="column" layout-align="center start">
@@ -74,7 +77,7 @@ Registration form. All functions for registration and login procedure should be 
                 <i class="material-icons">arrow_back</i>
                 <md-tooltip>Back</md-tooltip>
             </md-button>
-            
+
             <!-- Here in ng-click should be a function for registration -->
             <md-button class="md-raised md-primary reglogConfirm" ng-click="register()">
                 Register now
@@ -85,7 +88,7 @@ Registration form. All functions for registration and login procedure should be 
                 <i class="material-icons">arrow_back</i>
                 <md-tooltip>Back</md-tooltip>
             </md-button>
-            
+
             <!-- Here in ng-click should be a function for login -->
             <md-button class="md-raised md-primary reglogConfirm" ng-click="logIn()">
                 Log in
