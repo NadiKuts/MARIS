@@ -38,11 +38,12 @@ controllers.controller('logInCtrl', ['$scope', '$log', '$http', '$mdDialog', '$m
                     $scope.message = "You have successfully logged in!";
                     setTimeout(function () {
                         $mdDialog.hide();
-                    }, 2000);
+                    }, 500);
                     //Login Successfull.
                     //Close the login dialog
                     //Relocate to an authorised page
-
+                    var x = document.getElementById("user");
+                    x.innerHTML = response[0].name;
                     console.log(response);
                     localStorage.setItem("user", JSON.stringify({
                         user: response[0].name
@@ -87,10 +88,12 @@ controllers.controller('logInCtrl', ['$scope', '$log', '$http', '$mdDialog', '$m
                     if (response == 1) {
                         //Successfull Registration
                         $scope.message = "You have succesfully registered!"
+                        var x = document.getElementById("user");
+                        x.innerHTML = $scope.userInfo.firstname+" "+$scope.userInfo.lastname;
                         //Close the Registration Dialog
                         setTimeout(function () {
                             $mdDialog.hide();
-                        }, 2000);
+                        }, 500);
                     } else {
                         //Unsuccessful registration
                         //Inform user to try again

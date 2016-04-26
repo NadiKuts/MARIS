@@ -1,23 +1,23 @@
 * Hostname was found in DNS cache
 * Hostname in DNS cache was stale, zapped
 *   Trying ::1...
-* Connected to localhost (::1) port 8080 (#4)
+* Connected to localhost (::1) port 8080 (#2)
 * Server auth using Basic with user 'admin'
 > POST /geoserver/rest/workspaces HTTP/1.1
 Authorization: Basic YWRtaW46Z2Vvc2VydmVy
 Host: localhost:8080
 Accept: */*
 Content-type: application/xml
-Content-Length: 48
+Content-Length: 49
 
-* upload completely sent off: 48 out of 48 bytes
+* upload completely sent off: 49 out of 49 bytes
 < HTTP/1.1 201 Created
-< Date: Tue, 12 Apr 2016 13:54:04 GMT
-< Location: http://localhost:8080/geoserver/rest/workspaces/Robert_Ohuru
+< Date: Tue, 26 Apr 2016 12:05:50 GMT
+< Location: http://localhost:8080/geoserver/rest/workspaces/Bert_Toxopeus
 * Server Noelios-Restlet-Engine/1.0..8 is not blacklisted
 < Server: Noelios-Restlet-Engine/1.0..8
 < Transfer-Encoding: chunked
 < 
-* Connection #4 to host localhost left intact
+* Connection #2 to host localhost left intact
 # Successful cURL request to http://localhost:8080/geoserver/rest/workspaces
 
