@@ -8,12 +8,11 @@ angular.module('maris', ['ngRoute', 'ngMaterial', 'md.data.table', 'angularTreev
         $routeProvider.when('/', {
             templateUrl: "views/workflow.html"
         })
-        /*
-        .when('/geonetcast', {
-            templateUrl: "views/geonetcast.html",
-            controller: ""
-        })
         
+        .when('/livestock', {
+            templateUrl: "views/livestock.html"
+        })
+        /*
         .when('/priceinfo', {
             templateUrl: "views/priceinfo.html",
             controller: "dictionaryCtr"
