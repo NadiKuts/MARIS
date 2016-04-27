@@ -1,0 +1,16 @@
+<div ng-controller="livestockCtrl">
+    <md-content>
+        <br>
+        <md-toolbar>
+            <h3>
+                <span>Livestock markets</span>
+            </h3>
+        </md-toolbar>
+    </md-content>
+    <div id="markets_map">
+        <openlayers ol-center="center" height="400px" width="45%">
+            <ol-layer ol-layer-properties="bounds"></ol-layer>
+            <ol-layer ng-repeat="market in markets" name="{{ market.name }}" ol-layer-properties="market"></ol-layer>
+        </openlayers>
+    </div>
+</div>
