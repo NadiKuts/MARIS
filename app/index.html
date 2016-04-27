@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    <md-toolbar id="navbar" ng-controller="SidenavCtrl" ng-app="MyApp" style="position: fixed">
+    <md-toolbar id="navbar" ng-controller="SidenavCtrl" ng-app="MyApp">
         <div ng-controller="logInCtrl" class="md-toolbar-tools" >
             <h2>
                 <span>Mara Rangeland Information System (MARIS)</span>
@@ -45,7 +45,6 @@
                 <i class="material-icons">account_circle</i>
                 <md-tooltip>Log In</md-tooltip>
             </md-button>
-            <p style="font-size: 14px;font-family:cambria" id="user"></p>
             <md-button class="md-icon-button" ng-click="toggleRight()" ng-hide="isOpenRight()" aria-label="More">
                 <i class="material-icons">menu</i>
             </md-button>
@@ -59,8 +58,12 @@
             </md-toolbar>
             <md-content layout-padding="">
                 <form>
-                    <md-button class="md-primary">
-                        Livestock price
+                    <md-button href='#/' class="md-primary">
+                        Carrying capacity model
+                    </md-button>
+                    <br>
+                    <md-button href='#/livestock' class="md-primary">
+                        Livestock markets
                     </md-button>
                     <br>
                     <md-button class="md-primary">
@@ -73,10 +76,6 @@
                     <br>
                     <md-button class="md-primary">
                         Live biomass map
-                    </md-button>
-                    <br>
-                    <md-button class="md-primary">
-                        Cattle market-price
                     </md-button>
                 </form>
             </md-content>
@@ -93,16 +92,16 @@
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="images/img1.jpg" style="width: 100%;height: 100%;">
+                    <img src="images/img1.jpg">
                 </div>
                 <div class="item">
-                    <img src="images/img2.jpg"  style="width: 100%;height: 100%;">
+                    <img src="images/img2.jpg">
                 </div>
                 <div class="item">
-                    <img src="images/img3.jpg"  style="width: 100%;height: 100%;">
+                    <img src="images/img3.jpg">
                 </div>
                 <div class="item">
-                    <img src="images/img4.jpg"  style="width: 100%;height: 100%;">
+                    <img src="images/img4.jpg">
                 </div>
             </div>
         </div>
@@ -110,7 +109,7 @@
 
     <div class="view" ng-view></div>
 
-    <div class="footer" style="z-index: 10">Copyright &copy; 2016 MaMaSe Sustainable Water Initiative</div>
+    <div class="footer">Copyright &copy; 2016 MaMaSe Sustainable Water Initiative</div>
     <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
@@ -138,6 +137,8 @@
     <script src="app.js"></script>
     <script src="js/controllers/controllers.js"></script>
 	<script src="js/controllers/login.js"></script>
+    <script src="js/controllers/workflow.js"></script>
+    <script src="js/controllers/livestock.js"></script>
     <script src="js/services/services.js"></script>
 
 </body>
