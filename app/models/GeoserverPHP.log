@@ -1,23 +1,21 @@
-* Hostname was found in DNS cache
-* Hostname in DNS cache was stale, zapped
+* Hostname was NOT found in DNS cache
 *   Trying ::1...
-* Connected to localhost (::1) port 8080 (#2)
+* Connected to localhost (::1) port 8080 (#0)
 * Server auth using Basic with user 'admin'
 > POST /geoserver/rest/workspaces HTTP/1.1
 Authorization: Basic YWRtaW46Z2Vvc2VydmVy
 Host: localhost:8080
 Accept: */*
 Content-type: application/xml
-Content-Length: 49
+Content-Length: 48
 
-* upload completely sent off: 49 out of 49 bytes
-< HTTP/1.1 201 Created
-< Date: Tue, 26 Apr 2016 12:05:50 GMT
-< Location: http://localhost:8080/geoserver/rest/workspaces/Bert_Toxopeus
-* Server Noelios-Restlet-Engine/1.0..8 is not blacklisted
-< Server: Noelios-Restlet-Engine/1.0..8
+* upload completely sent off: 48 out of 48 bytes
+< HTTP/1.1 500 Internal Server Error
+< Content-Type: text/plain
 < Transfer-Encoding: chunked
+* Server Jetty(6.1.8) is not blacklisted
+< Server: Jetty(6.1.8)
 < 
-* Connection #2 to host localhost left intact
-# Successful cURL request to http://localhost:8080/geoserver/rest/workspaces
-
+* Connection #0 to host localhost left intact
+# Unsuccessful cURL request to http://localhost:8080/geoserver/rest/workspaces [500]
+:Workspace named 'Robert_Ohuru' already exists.

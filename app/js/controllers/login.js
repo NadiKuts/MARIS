@@ -45,9 +45,11 @@ controllers.controller('logInCtrl', ['$scope', '$log', '$http', '$mdDialog', '$m
                     var x = document.getElementById("user");
                     x.innerHTML = response[0].name;
                     console.log(response);
-                    localStorage.setItem("user", JSON.stringify({
-                        user: response[0].name
+                    sessionStorage.setItem("user", JSON.stringify({
+                        name: response[0].name,
+                        email: response[0].email
                     }));
+
                 } else {
                     //Notify user of wrong login details
                     $scope.message = "Username or password is not valid. Try again!";

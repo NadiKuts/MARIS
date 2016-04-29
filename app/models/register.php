@@ -12,7 +12,7 @@ $lastname = $data->lastname;
 $company = $data->company;
 $email = $data->email;
 $password = $data->password;
-
+$password = md5($password);
 
 $query = "INSERT INTO users(firstname,lastname,company, email, password) VALUES(?,?,?,?,?)";
 

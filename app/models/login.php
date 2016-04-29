@@ -5,6 +5,7 @@ $db = $DBConnect->connect();
 $data = json_decode(file_get_contents("php://input"));
 $email = $data->email;
 $password = $data->password;
+$password = md5($password);
 
 //$userInfo = $db->query("SELECT name from users WHERE email='$email' AND password='$password'");
 //$userInfo = $userInfo->fetchAll();
