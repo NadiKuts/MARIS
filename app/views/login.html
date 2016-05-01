@@ -1,5 +1,5 @@
 <!--
-Registration form. All functions for registration and login procedure should be in file "controllers.js" especially inside of controller "logInCtrl"
+Registration form. All functions for registration and login procedure should be in file "login.js" especially inside of controller "logInCtrl"
 -->
 
 
@@ -86,6 +86,7 @@ Registration form. All functions for registration and login procedure should be 
                 </md-input-container>
                 <md-button md-no-ink class="md-primary" ng-click="showPass=!showPass">Forgot password</md-button>
             </div>
+            <span id="message">{{message}}</span>
         </md-dialog-content>
         <md-dialog-actions id="regFormAct" layout="row" layout-align="space-between center" ng-show="showLogin; !showPass" ng-hide="!showLogin">
             <md-button class="md-icon-button md-primary" ng-click="showLogin=!showLogin">
