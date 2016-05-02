@@ -1,16 +1,38 @@
 <div ng-controller="livestockCtrl">
     <md-content>
-        <br>
-        <md-toolbar>
-            <h3>
-                <span>Livestock markets</span>
-            </h3>
+        <md-toolbar id="lvstck_tbar">
+            <h3 id="livest_title">Livestock markets</h3>
         </md-toolbar>
     </md-content>
-    <div id="markets_map">
-        <openlayers ol-center="center" height="400px" width="45%">
-            <ol-layer ol-layer-properties="bounds"></ol-layer>
-            <ol-layer ng-repeat="market in markets" name="{{ market.name }}" ol-layer-properties="market"></ol-layer>
-        </openlayers>
+    <div ng-controller="expandCollapseCtrl" id="wkf_tab_cont" class="md-padding" id="markets_map">
+        <div flex="48">
+            <openlayers ol-center="center" height="400px" width="100%">
+                <ol-layer ol-layer-properties="bounds"></ol-layer>
+                <ol-layer ng-repeat="market in markets" name="{{ market.name }}" ol-layer-properties="market"></ol-layer>
+            </openlayers>
+        </div>
+        <div flex="48">
+    <div class="markets">
+        <md-table-container>
+            <table md-table>
+                <thead md-head>
+                    <tr md-row>
+                        <th md-column>Example1</th>
+                        <th md-column md-numeric>Cattle</th>
+                        <th md-column md-numeric>Sheep</th>
+                        <th md-column md-numeric>Cows</th>
+                    </tr>
+                </thead>
+                <tbody md-body>
+                    <tr>
+                        <td md-cell>Example</td>
+                        <td md-cell>35</td>
+                        <td md-cell>48</td>
+                        <td md-cell>12</td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+        </div>
     </div>
 </div>

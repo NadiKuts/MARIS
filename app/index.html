@@ -42,14 +42,19 @@
                 <span>Mara Rangeland Information System (MARIS)</span>
             </h2>
             <img class="logo" src='images/logo.png'>
+        
+            <p id="userName">{{user}}</p>
             
-            <md-button class="md-icon-button" ng-click="showLogIn($event)" id="loginBtn">
+            <!--Hide, when login is successful. Show, after logOut() function -->
+            <md-button class="md-icon-button" ng-click="showLogIn($event)" ng-hide="logged" ng-show="!logged">
                 <i class="material-icons">account_circle</i>
                 <md-tooltip>Log In</md-tooltip>
             </md-button>
-            <p style="font-size: 14px;font-family:cambria" id="user"></p>
-            <md-button class="md-icon-button" ng-click="toggleRight()" ng-hide="isOpenRight()" aria-label="More">
-                <i class="material-icons">menu</i>
+            
+            <!-- Show, when login is successful. Hide, after logOut() function -->
+            <md-button class="md-icon-button" ng-click="logOut()" ng-show="logged" ng-hide="!logged">
+                <i class="material-icons">exit_to_app</i>
+                <md-tooltip>Log Out</md-tooltip>
             </md-button>
         </div>
     </md-toolbar>
