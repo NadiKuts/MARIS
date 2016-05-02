@@ -1,4 +1,4 @@
-<div style="height:100%;" ng-controller='workflowCtrl'>
+<div style="height:100%; padding-top: 0%; margin-left: 5%;margin-right: 5%;" ng-controller='workflowCtrl'>
     <md-content style="height:100%;">
         <ul class="nav nav-pills">
             <li ng-repeat="subworkflow in subWFLarray" ng-class="{active:isSet(subworkflow.id)}" ng-init="createContent(0)"><a href ng-click="createContent(subworkflow.id); setTab(subworkflow.id);">{{subworkflow.metadata.longName}}</a></li>
@@ -55,7 +55,7 @@
         </div>
     </md-content>
 </div>
-<!--<div ng-controller="DBCtrl">
+<div ng-controller="DBCtrl" style="margin-left: 5%;margin-right: 5%;">
     <md-button class="md-raised md-primary">Daily dry matter intake of grass</md-button>
     <div class="animals">
         <md-table-container>
@@ -80,5 +80,5 @@
                 </tbody>
             </table>
         </md-table-container>
-    </div>-->
+    </div>
 </div>

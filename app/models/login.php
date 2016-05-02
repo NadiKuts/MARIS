@@ -10,24 +10,35 @@ $password = md5($password);
 //$userInfo = $db->query("SELECT name from users WHERE email='$email' AND password='$password'");
 //$userInfo = $userInfo->fetchAll();
 
-$query = "SELECT firstname, lastname, email FROM users WHERE email='$email' AND password='$password'";
-$result = mysqli_query($db, $query);
+$query = "SELECT firstname, lastname, email FROM mamase.users WHERE email='$email' AND password='$password'";
+
+$result = pg_query($db, $query);
+
+//$result = mysqli_query($db, $query);
 
 $a = array();
 $b = array();
 $count = 0;
-while ($row = mysqli_fetch_array($result)) {
-	$count++;
+
+while ($row = pg_fetch_row($result)) {
+    $count++;
     $b["name"] = $row[0].' '.$row[1];
     $b["email"] = $row[2];
     array_push($a, $b);
 }
+
+/*while ($row = mysqli_fetch_array($result)) {
+	$count++;
+    $b["name"] = $row[0].' '.$row[1];
+    $b["email"] = $row[2];
+    array_push($a, $b);
+}*/
 if($count > 0){
 	echo json_encode($a);
 }else{
 	echo json_encode($count);
 }
-
+pg_close();
 
 //echo json_encode($result);
 

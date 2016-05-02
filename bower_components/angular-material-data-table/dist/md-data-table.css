@@ -316,6 +316,8 @@ table.md-table td.md-cell,
 table.md-table th.md-column {
   vertical-align: middle;
   text-align: left;
+  font-size: 20px;
+  font-family: cambria;
 }
 table.md-table td.md-cell > *,
 table.md-table th.md-column > * {

@@ -3,7 +3,6 @@
 // Declare app level module which depends on views, and components
 /*angular.module('maris', ['ngRoute', 'ngMaterial', 'mdDataTable', 'angularBootstrapNavTree'])*/
 angular.module('maris', ['ngRoute', 'ngMaterial', 'md.data.table', 'angularTreeview', 'openlayers-directive', 'ui.bootstrap', 'ngMessages'])
-
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/', {
             templateUrl: "views/workflow.html"

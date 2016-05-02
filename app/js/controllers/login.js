@@ -44,7 +44,6 @@ controllers.controller('logInCtrl', ['$scope', '$log', '$http', '$mdDialog', '$m
                     //Relocate to an authorised page
                     var x = document.getElementById("user");
                     x.innerHTML = response[0].name;
-                    console.log(response);
                     sessionStorage.setItem("user", JSON.stringify({
                         name: response[0].name,
                         email: response[0].email
@@ -53,7 +52,6 @@ controllers.controller('logInCtrl', ['$scope', '$log', '$http', '$mdDialog', '$m
                 } else {
                     //Notify user of wrong login details
                     $scope.message = "Username or password is not valid. Try again!";
-                    console.log("Not Logged In");
                 }
 
 
@@ -90,8 +88,8 @@ controllers.controller('logInCtrl', ['$scope', '$log', '$http', '$mdDialog', '$m
                     if (response == 1) {
                         //Successfull Registration
                         $scope.message = "You have succesfully registered!"
-                        var x = document.getElementById("user");
-                        x.innerHTML = $scope.userInfo.firstname+" "+$scope.userInfo.lastname;
+                        //var x = document.getElementById("user");
+                        //x.innerHTML = $scope.userInfo.firstname+" "+$scope.userInfo.lastname;
                         //Close the Registration Dialog
                         setTimeout(function () {
                             $mdDialog.hide();
@@ -101,7 +99,7 @@ controllers.controller('logInCtrl', ['$scope', '$log', '$http', '$mdDialog', '$m
                         //Inform user to try again
                         $scope.message = "Something is wrong. Try again!";
                     }
-                    console.log(response);
+                   
 
                 }).error(function (error) {
                     console.error(error);
