@@ -231,10 +231,10 @@ md-ink-bar {
 md-tab {
   position: absolute;
   z-index: -1;
+
   left: -9999px; }
 
 .md-tab {
-  font-size: 14px;
   text-align: center;
   line-height: 24px;
   padding: 12px 24px;
@@ -244,6 +244,7 @@ md-tab {
   position: relative;
   text-transform: uppercase;
   float: left;
+  
   font-weight: 500;
   box-sizing: border-box;
   overflow: hidden;

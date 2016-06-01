@@ -1,0 +1,339 @@
+<div ng-controller="AdminCtrl as ctrl" ng-cloak style="height:100%; padding-top: 0%; margin-left: 5%;margin-right: 5%;margin-top : 1%; padding-bottom: 5%;">
+  <md-toolbar class="md-menu-toolbar">
+    <div layout="row">      
+      <div>
+        <md-button class="md-raised md-primary">Admin Dashboard</md-button>
+        <!--<h2 class="md-toolbar-tools">Admin Dashboard</h2>-->
+        <md-menu-bar >
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              Users
+            </button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button ng-click="sampleAction('Active', $event)">
+                  Active Users
+                </md-button>
+              </md-menu-item>
+              <!--<md-menu-divider></md-menu-divider>-->
+              <md-menu-item>
+                <md-button ng-click="sampleAction('Modellors', $event)">
+                  Modellors
+                  <!--<span class="md-alt-text"> {{ 'M-O' | keyboardShortcut }}</span>-->
+                </md-button>
+              </md-menu-item>
+              <!--<md-menu-item>
+                <md-menu>
+                  <md-button ng-click="$mdOpenMenu()">Users</md-button>
+                  <md-menu-content>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Document', $event)">Document</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Presentation', $event)">Presentation</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Form', $event)">Form</md-button></md-menu-item>
+                    <md-menu-item><md-button ng-click="ctrl.sampleAction('New Drawing', $event)">Drawing</md-button></md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+              </md-menu-item>
+              
+              <md-menu-item>
+                <md-button disabled="disabled" ng-click="sampleAction('Rename', $event)">
+                  Rename
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item>
+                <md-button ng-click="sampleAction('Print', $event)">
+                  Print
+                  <span class="md-alt-text">{{ 'M-P' | keyboardShortcut }}</span>
+                </md-button>
+              </md-menu-item>-->
+            </md-menu-content>
+          </md-menu>
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              Roles
+            </button>
+            <md-menu-content>
+              <md-menu-item class="md-indent">
+                <md-button ng-click="sampleAction('AddRole', $event)">
+                  Add Role
+                  <!--<span class="md-alt-text">{{ 'M-Z' | keyboardShortcut }}</span>-->
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">                
+                <md-button ng-click="sampleAction('roles', $event)">
+                  View Roles
+                  <!--<span class="md-alt-text">{{ 'M-Y' | keyboardShortcut }}</span>-->
+                </md-button>
+              </md-menu-item>
+              <!--<md-menu-divider></md-menu-divider>
+              <md-menu-item class="md-indent">
+                <md-icon md-svg-icon="content-cut"></md-icon>
+                <md-button ng-click="sampleAction('cut', $event)">
+                  Cut
+                  <span class="md-alt-text">{{ 'M-X' | keyboardShortcut }}</span>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">
+                <md-icon md-svg-icon="content-copy"></md-icon>
+                <md-button ng-click="sampleAction('copy', $event)">
+                  Copy
+                  <span class="md-alt-text">{{ 'M-C' | keyboardShortcut }}</span>
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">
+                <md-icon md-svg-icon="content-paste"></md-icon>
+                <md-button ng-click="sampleAction('paste', $event)">
+                  Paste
+                  <span class="md-alt-text">{{ 'M-P' | keyboardShortcut }}</span>
+                </md-button>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item class="md-indent">
+                <md-button ng-click="sampleAction('Find and replace', $event)">
+                  Find and replace...
+                  <span class="md-alt-text">{{ 'M-S-H' | keyboardShortcut }}</span>
+                </md-button>
+              </md-menu-item>-->
+            </md-menu-content>
+          </md-menu>
+          <!--<md-menu>
+            <button ng-click="$mdOpenMenu()">
+              View
+            </button>
+            <md-menu-content>
+              <md-menu-item type="checkbox" ng-model="ctrl.settings.printLayout">Print layout</md-menu-item>
+              <md-menu-item class="md-indent">
+                <md-menu>
+                  <md-button ng-click="$mdOpenMenu()">Mode</md-button>
+                  <md-menu-content width="3">
+                    <md-menu-item type="radio" ng-model="ctrl.settings.presentationMode" value="'presentation'">Presentation</md-menu-item>
+                    <md-menu-item type="radio" ng-model="ctrl.settings.presentationMode" value="'edit'">Edit</md-menu-item>
+                    <md-menu-item type="radio" ng-model="ctrl.settings.presentationMode" value="'modifiable'">Modifiable</md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+              </md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item type="checkbox" ng-model="ctrl.settings.showRuler">Show ruler</md-menu-item>
+              <md-menu-item type="checkbox" ng-model="ctrl.settings.showEquationToolbar">Show equation toolbar</md-menu-item>
+              <md-menu-item type="checkbox" ng-model="ctrl.settings.showSpellingSuggestions">Show spelling suggestions</md-menu-item>
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item type="checkbox" ng-model="ctrl.settings.compactControls">Compact controls</md-menu-item>
+              <md-menu-item type="checkbox" ng-model="ctrl.settings.fullScreen">Full screen</md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        -->
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              User Workspaces
+            </button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button ng-click="sampleAction('Geoserver', $event)">
+                  Geoserver
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="sampleAction('Folders', $event)">
+                  Folders
+                </md-button>
+              </md-menu-item>              
+              <md-menu-divider></md-menu-divider>
+              <md-menu-item><md-button ng-click="sampleAction('Clear', $event)">Clear Workspaces</md-button></md-menu-item>
+            </md-menu-content>
+          </md-menu>
+
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              Market Information
+            </button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button ng-click="sampleAction('Cattle', $event)">
+                  Cattle
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="sampleAction('Sheep', $event)">
+                  Sheep
+                </md-button>
+              </md-menu-item>              
+              <md-menu-item>
+                <md-button ng-click="sampleAction('Goats', $event)">
+                  Goats
+                </md-button>
+              </md-menu-item>   
+            </md-menu-content>
+          </md-menu>
+
+        </md-menu-bar>
+      </div>
+    </div>
+  </md-toolbar>
+  <div class="page-container" style="margin-left: 2%;margin-right: 5%;margin-top : 1%;">
+    <div class="page">
+      <div ng-show="livestock" ng-hide="!livestock">
+        <h1>Cattle Information</h1>
+        <md-table-container style="background: #f6f6f6; height: 500px; padding: 1%">
+          <table md-table>
+            <thead md-head>
+              <tr md-row>
+                <th md-column>Date</th>
+                <th md-column>Sex</th>
+                <th md-column >Age</th>
+                <th md-column >Quality</th>
+                <th md-column >Breed</th>
+                <th md-column md-numeric>Price</th>
+                <th md-column md-numeric>Number Traded</th>
+                <th md-column>Transaction Between</th>
+                <th md-column>Enumerator</th>
+              </tr>
+            </thead>
+            <tbody md-body>
+              <tr md-row ng-repeat="row in tableRows">
+                 <td md-cell>{{row.date}}</td>
+                 <td md-cell>{{row.sex}}</td>
+                 <td md-cell>{{row.age}}</td>
+                 <td md-cell>{{row.quality}}</td>
+                 <td md-cell>{{row.breed}}</td>
+                 <td md-cell>{{row.price}}</td>
+                 <td md-cell>{{row.number}}</td>
+                 <td md-cell>{{row.association}}</td>
+                 <td md-cell>{{row.enumerator}}</td>
+              </tr>
+            </tbody>
+          </table>
+          </md-table-container>         
+      </div>
+
+      <div ng-show="sheepValue" ng-hide="!sheepValue">
+        <h1>Sheep Information</h1>
+        <md-table-container style="background: #f6f6f6; height: 500px; padding: 1%">
+          <table md-table>
+            <thead md-head>
+              <tr md-row>
+                <th md-column>Date</th>
+                <th md-column>Sex</th>
+                <th md-column >Age</th>
+                <th md-column >Quality</th>
+                <th md-column >Breed</th>
+                <th md-column md-numeric>Price</th>
+                <th md-column md-numeric>Number Traded</th>
+                <th md-column>Transaction Between</th>
+                <th md-column>Enumerator</th>
+              </tr>
+            </thead>
+            <tbody md-body>
+              <tr md-row ng-repeat="row in sheepRows">
+                 <td md-cell>{{row.date}}</td>
+                 <td md-cell>{{row.sex}}</td>
+                 <td md-cell>{{row.age}}</td>
+                 <td md-cell>{{row.quality}}</td>
+                 <td md-cell>{{row.breed}}</td>
+                 <td md-cell>{{row.price}}</td>
+                 <td md-cell>{{row.number}}</td>
+                 <td md-cell>{{row.association}}</td>
+                 <td md-cell>{{row.enumerator}}</td>
+              </tr>
+            </tbody>
+          </table>
+          </md-table-container>         
+      </div>
+
+      <div ng-show="goatValue" ng-hide="!goatValue">
+        <h1>Goats Information</h1>
+        <md-table-container style="background: #f6f6f6; height: 500px; padding: 1%">
+          <table md-table>
+            <thead md-head>
+              <tr md-row>
+                <th md-column>Date</th>
+                <th md-column>Sex</th>
+                <th md-column >Age</th>
+                <th md-column >Quality</th>
+                <th md-column >Breed</th>
+                <th md-column md-numeric>Price</th>
+                <th md-column md-numeric>Number Traded</th>
+                <th md-column>Transaction Between</th>
+                <th md-column>Enumerator</th>
+              </tr>
+            </thead>
+            <tbody md-body>
+              <tr md-row ng-repeat="row in goatRows">
+                 <td md-cell>{{row.date}}</td>
+                 <td md-cell>{{row.sex}}</td>
+                 <td md-cell>{{row.age}}</td>
+                 <td md-cell>{{row.quality}}</td>
+                 <td md-cell>{{row.breed}}</td>
+                 <td md-cell>{{row.price}}</td>
+                 <td md-cell>{{row.number}}</td>
+                 <td md-cell>{{row.association}}</td>
+                 <td md-cell>{{row.enumerator}}</td>
+              </tr>
+            </tbody>
+          </table>
+          </md-table-container>         
+      </div>
+      <div ng-show="showRoles" ng-hide="!showRoles">
+        <h1>Roles Information</h1>
+        <md-table-container style="background: #f6f6f6; height: 500px; padding: 1%">
+          <table md-table>
+            <thead md-head>
+              <tr md-row>
+                <th md-column>Role ID</th>
+                <th md-column>Name</th>
+                <th md-column >Description</th>
+                <th md-column >Action</th>
+                
+              </tr>
+            </thead>
+            <tbody md-body>
+              <tr md-row ng-repeat="row in roleRows">
+                 <td md-cell>{{row.id}}</td>
+                 <td md-cell>{{row.rolename}}</td>
+                 <td md-cell>{{row.description}}</td>
+                 <td md-cell>
+                    <select ng-model="selectedSize" x-ng-change="selectFunct({{row.id}})">
+                      <option value="">---Select Action---</option>
+                      <option value="edit">Edit</option>
+                      <option value="delete">Delete</option>
+                    </select>
+                 </td>
+              </tr>
+            </tbody>
+          </table>
+          </md-table-container>         
+      </div>
+
+      <div ng-show="showActiveUser" ng-hide="!showActiveUser">
+        <h1>Active Users Information</h1>
+        <md-table-container style="background: #f6f6f6; height: 500px; padding: 1%">
+          <table md-table>
+            <thead md-head>
+              <tr md-row>
+                <th md-column>#</th>
+                <th md-column>Name</th>
+                <th md-column >Email Address</th>
+                <th md-column >Action</th>
+                
+              </tr>
+            </thead>
+            <tbody md-body>
+              <tr md-row ng-repeat="row in activeRows">
+                 <td md-cell>{{row.id}}</td>
+                 <td md-cell>{{row.name}}</td>
+                 <td md-cell>{{row.email}}</td>
+                 <td md-cell>
+                    <select ng-model="selectedSize" x-ng-change="selectUser({{row.id}})">
+                      <option value="">---Select Action---</option>
+                      <option value="delete">Delete</option>
+                    </select>
+                 </td>
+              </tr>
+            </tbody>
+          </table>
+          </md-table-container>         
+      </div>
+
+    </div>
+  </div>
+</div>

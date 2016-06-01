@@ -16,7 +16,55 @@ require_once 'config.php';
 class GeoClass {
 
     //put your code here
+    function getWorkSpaces(){
+        $logfh = fopen("GeoserverPHP.log", 'w') or die("can't open log file");
 
+        // Initiate cURL session
+        $service = "http://".GEO_HOST.":".GEO_PORT."/geoserver/"; // replace with your URL
+        $request = "rest/workspaces"; // to add a new workspace
+        $url = $service . $request;
+        $ch = curl_init($url);
+
+        // Optional settings for debugging
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); //option to return string
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+        curl_setopt($ch, CURLOPT_STDERR, $logfh); // logs curl messages
+        //Required POST request settings
+        curl_setopt($ch, CURLOPT_POST, True);
+
+        //curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/xml"));
+        $passwordStr = GEO_USER.":".GEO_PASSWORD; // replace with your username:password
+        curl_setopt($ch, CURLOPT_USERPWD, $passwordStr);
+
+        //POST data
+        //curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-type: application/xml"));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/xml"));
+        //$xmlStr = "<workspace><name>" . $workspace . "</name></workspace>";
+        //curl_setopt($ch, CURLOPT_POSTFIELDS, $xmlStr);
+
+        //POST return code
+        $successCode = 200;
+        $result = 0;
+
+        $buffer = curl_exec($ch); // Execute the curl request
+        // Check for errors and process results
+        $info = curl_getinfo($ch);
+        if ($info['http_code'] != $successCode) {
+
+            $msgStr = "# Unsuccessful cURL request to ";
+            $msgStr .= $url . " [" . $info['http_code'] . "]\n";
+            fwrite($logfh, $msgStr);
+        } else {
+            $result = 1;
+            $msgStr = "# Successful cURL request to " . $url . "\n";
+            fwrite($logfh, $msgStr);
+        }
+        fwrite($logfh, $buffer . "\n");
+
+        curl_close($ch); // free resources if curl handle will not be reused
+        fclose($logfh);  // close logfile
+        return $result;
+    }
 
     function createWorkSpace($workspace) {
         $logfh = fopen("GeoserverPHP.log", 'w') or die("can't open log file");

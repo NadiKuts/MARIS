@@ -1,0 +1,1 @@
+http://130.89.221.193:85/geoserver/test/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=test:Protected-Areas_WGS&maxFeatures=50&outputFormat=SHAPE-ZIP

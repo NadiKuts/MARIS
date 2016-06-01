@@ -1,28 +1,31 @@
 var controllers = angular.module('maris');
 
-
-
 /*View additional tables*/
 controllers.controller('DBCtrl', ['$scope', '$http', function ($scope, $http) {
     // controller code goes here
     // Get data from table
     $scope.data = [];
-    $http.get('http://130.89.221.193:3000/api/v1/statictables')
+    $http.get('http://localhost:3000/api/v1/statictables')
         .success(function (data) {
             $scope.tableRows = data;
-            console.log($scope.tableRows);
         })
         .error(function (error) {
             console.log('Error: ' + error);
         });
 }]);
 
-/*controllers.controller('RESTgeo', ['$scope', '$http', 'workspaces', function ($scope, $http, workspaces) {
+controllers.controller('RESTgeo', ['$scope', '$http', 'workspaces', function ($scope, $http, workspaces) {
     workspaces.getWorkspaces().success(function (data) {
         console.log(data);
     });
+    var test = "test";
+    workspaces.getProfile(test).success(function (data) {
+        console.log(data);
+    });
 
-}]);*/
+}]);
+
+
 
 
 
@@ -83,3 +86,4 @@ controllers.controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log
             .then(function () {});
     };
 });
+

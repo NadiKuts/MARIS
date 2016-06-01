@@ -35,4 +35,23 @@ controllers.controller('livestockCtrl', ['$scope', function ($scope) {
             }
         ],
     });
+
+    
+}]);
+
+
+
+controllers.controller('marketinfoCtrl',['$scope', '$http', function($scope, $http){
+    //var data = { "email": ""};
+    $scope.data = [];
+    $http.post("models/marketinfo.php").success(function (data) {
+        $scope.tableRows = data.cattle;
+        $scope.sheepRows = data.sheep;
+        $scope.goatRows = data.goats;
+    });
+    $scope.onTabSelect = function(tabName) {
+       
+        //$scope.selectedTabName = tabName;
+        //console.log("Changed tab to " + tabName);
+    }
 }]);

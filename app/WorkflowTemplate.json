@@ -39,8 +39,8 @@
                             "change": true,
                             "description": "",
                             "picture": ""
-        }
-      ],
+						}
+					],
                     "outputs": [
                         {
                             "id": 0,
@@ -51,10 +51,10 @@
                             "show": true,
                             "description": "",
                             "picture": ""
-        }
-      ],
+						}
+					],
                     "connections": []
-    },
+				},
                 {
                     "id": 1,
                     "metadata": {
@@ -233,7 +233,7 @@
                             "change": true,
                             "description": "",
                             "picture": ""
-        },
+						},
                         {
                             "id": 1,
                             "url": "http://130.89.221.193:85/geoserver/test/wms?service=WMS&version=1.1.0&request=GetMap&layers=test:Rainfall%20map&styles=&bbox=696275.4,9797373.370000001,813775.4,9885123.370000001&width=768&height=573&srs=EPSG:21036&format=application/openlayers",
@@ -248,7 +248,7 @@
                             "change": true,
                             "description": "",
                             "picture": ""
-        },
+						},
                         {
                             "id": 2,
                             "url": "rem.com",
@@ -263,7 +263,7 @@
                             "change": true,
                             "description": "",
                             "picture": ""
-        },
+						},
                         {
                             "id": 3,
                             "url": "",
@@ -278,8 +278,8 @@
                             "change": true,
                             "description": "",
                             "picture": ""
-        }
-      ],
+						}
+					],
                     "outputs": [
                         {
                             "id": 0,
@@ -290,27 +290,27 @@
                             "show": true,
                             "description": "",
                             "picture": ""
-        }
-      ],
+						}
+					],
                     "connections": [
                         {
                             "fromOperationId": 0,
                             "fromParameterId": 0,
                             "toOperationId": 4,
                             "toParameterId":0
-        },
+						},
                         {
                             "fromOperationId": 1,
                             "fromParameterId": 0,
                             "toOperationId": 4,
                             "toParameterId": 1
-        },
+						},
                         {
                             "fromOperationId": 3,
                             "fromParameterId": 0,
                             "toOperationId": 4,
                             "toParameterId": 2
-        }
+						}
       ]
     }
   ]

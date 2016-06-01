@@ -4,17 +4,14 @@ $DBConnect = new DB_Connect();
 $db = $DBConnect->connect();
 $data = json_decode(file_get_contents("php://input"));
 $email = $data->email;
+
 $password = $data->password;
-$password = md5($password);
 
-//$userInfo = $db->query("SELECT name from users WHERE email='$email' AND password='$password'");
-//$userInfo = $userInfo->fetchAll();
+$hashedpassword = md5($password);
 
-$query = "SELECT firstname, lastname, email FROM mamase.users WHERE email='$email' AND password='$password'";
+$query = "SELECT firstname, lastname, email, roleid FROM mamase.users WHERE email='$email' AND password='$hashedpassword' AND deleted =FALSE ";
 
 $result = pg_query($db, $query);
-
-//$result = mysqli_query($db, $query);
 
 $a = array();
 $b = array();
@@ -24,21 +21,16 @@ while ($row = pg_fetch_row($result)) {
     $count++;
     $b["name"] = $row[0].' '.$row[1];
     $b["email"] = $row[2];
+    $b["role"] = $row[3];
     array_push($a, $b);
 }
-
-/*while ($row = mysqli_fetch_array($result)) {
-	$count++;
-    $b["name"] = $row[0].' '.$row[1];
-    $b["email"] = $row[2];
-    array_push($a, $b);
-}*/
 if($count > 0){
 	echo json_encode($a);
 }else{
-	echo json_encode($count);
+	echo json_encode(0);
 }
 pg_close();
+
 
 //echo json_encode($result);
 

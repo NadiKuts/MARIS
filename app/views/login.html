@@ -1,8 +1,6 @@
 <!--
 Registration form. All functions for registration and login procedure should be in file "login.js" especially inside of controller "logInCtrl"
 -->
-
-
 <md-dialog ng-controller="logInCtrl">
     <form layout="column" layout-align="center start">
         <md-toolbar>
@@ -10,7 +8,7 @@ Registration form. All functions for registration and login procedure should be 
                 <h2>Get access</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
-                    <i class="material-icons">cancel</i>
+                    <md-icon md-svg-src="images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>  
                     <md-tooltip>Cancel</md-tooltip>
                 </md-button>
 
@@ -78,11 +76,11 @@ Registration form. All functions for registration and login procedure should be 
             <div layout="column" layout-align="center start">
                 <md-input-container>
                     <label>Email</label>
-                    <input ng-model="loginInfo.email" type="email">
+                    <input ng-model="loginInfo.email" type="email" name="password" required>
                 </md-input-container>
                 <md-input-container>
                     <label>Password</label>
-                    <input ng-model="loginInfo.password" type="password">
+                    <input ng-model="loginInfo.password" type="password" name="password" required>
                 </md-input-container>
                 <md-button md-no-ink class="md-primary" ng-click="showPass=!showPass">Forgot password</md-button>
             </div>
@@ -105,9 +103,11 @@ Registration form. All functions for registration and login procedure should be 
             <div layout="column" layout-align="center start">
                 <md-input-container>
                     <label>Email</label>
-                    <input ng-model="loginInfo.email" type="email">
+                    <input ng-model="forgotInfo.email" type="email">
                 </md-input-container>
+                <md-progress-circular md-mode="indeterminate" md-diameter="96" ng-show="showprogress" ng-hide="!showprogress"></md-progress-circular>
             </div>
+            <span id="message" style="color: #0000">{{message}}</span>
         </md-dialog-content>
         <md-dialog-actions id="regFormAct" layout="row" layout-align="space-between center" ng-show="showPass" ng-hide="!showPass">
             <md-button class="md-icon-button md-primary" ng-click="showPass = ! showPass">
@@ -116,10 +116,11 @@ Registration form. All functions for registration and login procedure should be 
             </md-button>
             
             <!--Here in ng-click should be a function for "FORGOT PASSWORD?" -->
-            <md-button class="md-raised md-primary reglogConfirm" ng-click="">
-                Send password
+            <md-button class="md-raised md-primary reglogConfirm" ng-click="forgotPassWord()">
+				Reset password
             </md-button>
-        </md-dialog-actions>
+        </md-dialog-actions>       
+
         
     </form>
 </md-dialog>

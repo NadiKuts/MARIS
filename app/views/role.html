@@ -1,0 +1,51 @@
+<md-dialog ng-controller="AdminCtrl">
+  <md-toolbar>
+      <div class="md-toolbar-tools">
+          <h2>{{title}}</h2>
+          <span flex></span>
+          <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+          </md-button>
+        </div>
+   </md-toolbar>
+   <form layout="column" layout-align="center start" ng-model="myform"> 
+        <!--Add Role Dialog Form -->
+         <md-dialog-content layout="column" id="regFormContent" style="padding: 5%">
+                  <md-input-container>
+                      <label>Role Name</label>
+                      <input ng-model="roleInfo.name" type="text">
+                  </md-input-container>                
+                   
+                  <md-input-container>
+                      <label>Role Description</label>
+                      <textarea name="description" ng-model="roleInfo.description" required></textarea>
+                  </md-input-container>                       
+              <span id="message">{{message}}</span>
+         
+          </md-dialog-content>
+          <md-dialog-actions id="loginFormAct" layout="row" layout-align="space-between center" ng-show="showAddForm" ng-hide="!showAddForm">
+              <md-button class="md-raised md-primary reglogConfirm" ng-click="addNewRole()">
+                  Submit
+              </md-button>
+          </md-dialog-actions>
+          <!--<md-dialog-content layout="column" id="regFormContent" style="padding: 5%" ng-show="showEditForm" ng-hide="!showEditForm" >
+                  <md-input-container>
+                      <label>Role Name</label>
+                      <input ng-model="roleInfo.name" type="text">
+                  </md-input-container>                
+                   
+                  <md-input-container>
+                      <label>Role Description</label>
+                      <textarea name="description" ng-model="roleInfo.description" required></textarea>
+                  </md-input-container>                       
+              <span id="message">{{message}}</span>
+         
+        </md-dialog-content>-->
+        <md-dialog-actions id="loginFormAct" layout="row" layout-align="space-between center" ng-show="showEditForm" ng-hide="!showEditForm">
+            <md-button class="md-raised md-primary reglogConfirm" ng-click="editRole()">
+                Update
+            </md-button>
+        </md-dialog-actions>
+        
+   </form>
+</md-dialog>

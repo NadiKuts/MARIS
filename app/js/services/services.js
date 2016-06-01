@@ -23,23 +23,25 @@ controllers.factory('API', ['$http', 'Server', function ($http, Server) {
     API.deleteProfile = function (id) {
         return $http.delete(Server + '/' + id);
     };
-    return API;
+    return API;s
 }])*/
 var controllers = angular.module('maris');
 
 controllers.factory('ModelData', function($http) { 
 
     var obj = {};
-
-    obj.getData = function () {
-        return $http.get('WorkflowTemplate.json');
+    //Added input parameter for path in function
+    obj.getData = function (path) {
+        return $http.get(path);
     }
 
     return obj;    
 });
 
+
+
 /*REST API GEOSERVER*/
-controllers.value('geoServer', 'http://130.89.221.193:85/geoserver/rest/workspaces')
+controllers.value('geoServer', 'http://admin:geoserver@130.89.221.193:85/geoserver/rest/workspaces')
 
 controllers.factory('workspaces', ['$http', 'geoServer', function ($http, geoServer) {
     var workspaces = {};

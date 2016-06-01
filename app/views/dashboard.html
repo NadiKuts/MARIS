@@ -1,0 +1,51 @@
+<div ng-controller="dashboardCtrl as ctrl" ng-cloak  style="height:100%; padding-top: 0%; margin-left: 5%;margin-right: 5%;margin-top : 1%; padding-bottom: 5%;">
+  <div >
+  <md-toolbar class="md-menu-toolbar">
+    <div layout="row">      
+      <div>
+        <md-button class="md-raised md-primary">User Dashboard</md-button>
+        <md-menu-bar >
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              Settings
+            </button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button ng-click="sampleAction('ChangePassword', $event)">
+                  Change Password
+                </md-button>
+              </md-menu-item>            
+              
+            </md-menu-content>
+          </md-menu>
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              Model Scenarios
+            </button>
+            <md-menu-content>
+              <md-menu-item class="md-indent">
+                <md-button ng-click="sampleAction('AddScenario', $event)">
+                  New Scenario
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">                
+                <md-button ng-click="sampleAction('Scenarios', $event)">
+                  View Scenarios
+                  <!--<span class="md-alt-text">{{ 'M-Y' | keyboardShortcut }}</span>-->
+                </md-button>
+              </md-menu-item>              
+            </md-menu-content>
+          </md-menu>         
+
+        </md-menu-bar>
+      </div>
+    </div>
+  </md-toolbar>
+  </div>
+  <div class="page-container" style="margin-left: 0%;margin-right: 0%;margin-top : 1%">
+    <div class="page" style="padding-left: 1%; padding-top: 5%; margin-left: 2%;margin-right: 2%">
+      
+
+    </div>
+  </div>
+</div>

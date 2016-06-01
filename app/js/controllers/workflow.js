@@ -1,11 +1,11 @@
 var controllers = angular.module('maris');
 
-controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 'workspaces', function ($scope, $log, $http, ModelData, olData) {
-    ModelData.getData().success(function (data) {
-
+controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 'workspaces', function ($scope, $log, $http, ModelData, ModelData1, olData) {
+    ModelData.getData('WorkFlow.json').success(function (data) {
         /* Counting the number of subworkflows, number of operations of each subworkflow */
-        $scope.subWFLarray = data.subworkflows;
+        $scope.subWFLarray = data.workflows;
         $scope.subWFLcount = $scope.subWFLarray.length;
+        
         $scope.tab = 0;
         $scope.setTab = function (sbwf_id) {
             $scope.tab = sbwf_id;
@@ -13,13 +13,27 @@ controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 
         $scope.isSet = function (sbwf_id) {
             return $scope.tab === sbwf_id;
         };
+        
+                
         /* Create initial content - outputs of final operations */
         $scope.createContent = function (sbwf_id) {
 
             /* create array for future work - it will be in separate function */
             var currConn = [];
+            
+            $scope.conn = $scope.subWFLarray[sbwf_id].connections;
             /* operCount - is a number of all operations in this subworkflow */
             $scope.oper = $scope.subWFLarray[sbwf_id].operations;
+            $scope.oper_length = $scope.oper.length;
+            for(var i = 0; i<$scope.oper_length; i++) {
+                $scope.oper[i].connections = [];
+                for (var j=0; j<$scope.conn.length; j++) {
+                    if ($scope.oper[i].id == $scope.conn[j].toOperationId) {
+                        $scope.oper[i].connections.push($scope.conn[j]);
+                    }
+                }
+            }
+            console.log($scope.oper);
 
 
             ///Make a tree
@@ -35,6 +49,7 @@ controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 
                     //console.log(arrElem);
                     mappedArr[arrElem.id] = arrElem;
                     mappedArr[arrElem.id]['children'] = [];
+                    //console.log(mappedArr);
                 }
 
                 for (var id in mappedArr) {
@@ -98,7 +113,7 @@ controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 
             }
             $scope.ttt = $scope.transformation($scope.oper);
             $scope.tree = $scope.unflatten($scope.ttt);
-            console.log($scope.tree);
+            //console.log($scope.tree);
         };
 
         $scope.showOutput = function (tree) {
@@ -116,8 +131,6 @@ controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 
                     }
                 }
             }
-            console.log($scope.url);
-
             angular.extend($scope, {
                 output_map: [
                     {

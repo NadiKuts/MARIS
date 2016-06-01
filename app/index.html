@@ -36,7 +36,7 @@
 </head>
 
 <body>
-    <md-toolbar id="navbar" ng-controller="SidenavCtrl" ng-app="MyApp" style="position: fixed">
+    <md-toolbar id="navbar" ng-controller="SidenavCtrl" ng-app="MyApp" style="position: absolute">
         <div ng-controller="logInCtrl" class="md-toolbar-tools" >
             <h2>
                 <span>Mara Rangeland Information System (MARIS)</span>
@@ -52,9 +52,12 @@
             </md-button>
             
             <!-- Show, when login is successful. Hide, after logOut() function -->
-            <md-button class="md-icon-button" ng-click="logOut()" ng-show="logged" ng-hide="!logged">
+            <md-button class="md-icon-button" ng-click="showConfirm($event)" ng-show="logged" ng-hide="!logged">
                 <i class="material-icons">exit_to_app</i>
                 <md-tooltip>Log Out</md-tooltip>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="toggleRight()" ng-hide="isOpenRight()" aria-label="More">
+                <i class="material-icons">menu</i>
             </md-button>
         </div>
     </md-toolbar>
@@ -65,11 +68,22 @@
                 <md-button class="md-toolbar-tools" ng-click="close()">Menu</md-button>
             </md-toolbar>
             <md-content layout-padding="">
-                <form>
+                <form> 
+                    
+                    <md-button href='#/dashboard' class="md-primary" ng-show="myValue" ng-hide="!myValue">
+                        Dashboard
+                    </md-button>
+
+                    <md-button href='#/admin' class="md-primary" ng-show="admin" ng-hide="!admin">
+                        Dashboard
+                    </md-button>
+                    
+
                     <md-button href='#/' class="md-primary">
                         Carrying capacity model
                     </md-button>
                     <br>
+                   
                     <md-button href='#/livestock' class="md-primary">
                         Livestock markets
                     </md-button>
@@ -148,6 +162,9 @@
     <script src="js/controllers/workflow.js"></script>
     <script src="js/controllers/livestock.js"></script>
     <script src="js/services/services.js"></script>
+    <script src="js/controllers/dashboard.js"></script>
+    <script src="js/controllers/admin.js"></script>
+    
 
 </body>
 
