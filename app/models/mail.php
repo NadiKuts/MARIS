@@ -11,7 +11,7 @@ $mail = new PHPMailer();
 
 $mail->IsSMTP();                                      // set mailer to use SMTP
 $mail->Host = EMAIL_HOST;  // specify main and backup server
-$mail->SMTPAuth = true;     // turn on SMTP authentication
+$mail->SMTPAuth = SMTPAuth;     // turn on SMTP authentication
 $mail->Username = USERNAME;  // SMTP username
 $mail->Password = PASSWORD; // SMTP password
 $mail->From = FROM_ADDRESS;

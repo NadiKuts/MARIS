@@ -5,8 +5,18 @@ controllers.controller('dashboardCtrl', ['$scope', '$http', '$mdDialog',
         var address = sessionStorage.getItem("email");
         var username = sessionStorage.getItem("username");
         $scope.showChangePass = false;
+        $scope.showForm = false;
         $scope.cancel = function () {
             $mdDialog.cancel();
+        };
+
+        $scope.run =function(){
+            $http.post("models/workflow.php").success(function (response) {
+                //console.log(response);
+                
+            }).error(function (error) {
+                console.error(error);
+            });
         };
 
             
@@ -55,6 +65,7 @@ controllers.controller('dashboardCtrl', ['$scope', '$http', '$mdDialog',
         $scope.sampleAction = function(name, ev) {
               if(name == "ChangePassword"){
                         $scope.showChangePass = true;
+                        $scope.showForm = false;
                         $mdDialog.show({
                         controller: dashboardController,
                         templateUrl: 'views/changepassword.html',
@@ -75,13 +86,16 @@ controllers.controller('dashboardCtrl', ['$scope', '$http', '$mdDialog',
               }
               else if(name == "AddScenario"){
                 $scope.showChangePass = false;
+                $scope.showForm = true;
 
               }else if(name == "Scenarios"){
                 $scope.showChangePass = false;
+                $scope.showForm = false;
               }
 
               else{
                 $scope.showChangePass = false;
+                $scope.showForm = false;
               }
         };
         

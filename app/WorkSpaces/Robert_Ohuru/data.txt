@@ -1,0 +1,2 @@
+C:\Apache24\htdocs\MARIS\app\WorkSpaces\Robert_Ohuru\Inputs\Protected-Areas_WGS\Protected-Areas_WGS.shp
+C:\Apache24\htdocs\MARIS\app\WorkSpaces\Robert_Ohuru\Inputs\Protected-Areas_WGS\Protected-Areas_WGS.shx

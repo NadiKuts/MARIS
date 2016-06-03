@@ -176,18 +176,18 @@ class GeoClass {
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 
         //$data = "file:///C:/Users/Robert/Documents/MaMaSe/mamase/area/shape/Boundaries_Mamase.shp";
-        $data = $file;
+        $data = "file:///".$file;
 
         if ($data != '') {
             curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: text/plain", 'Content-Length: ' . strlen($data)));
         }
-
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
         $rslt = curl_exec($ch);
         $info = curl_getinfo($ch);
+        curl_close($ch); // free resources if curl handle will not be reused
+        fclose($logfh); 
         return $rslt;
     }
 

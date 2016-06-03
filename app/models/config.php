@@ -1,32 +1,39 @@
 <?php
 
+$configpath = "../config.json";
+
+$string = file_get_contents(realpath($configpath));
+$json = json_decode($string, true);
+
 /**
  * Database configuration variables
  */
 
-define("DB_HOST", "130.89.221.193");
-define("DB_USER", "postgres");
-define("DB_PASSWORD", "123");
-define("DB_PORT", "5432");
-define("DB_DATABASE", "maris_db");
+
+define("DB_HOST", $json['database']['host']);
+define("DB_USER", $json['database']['user'] );
+define("DB_PASSWORD", $json['database']['password'] );
+define("DB_PORT", $json['database']['port']);
+define("DB_DATABASE", $json['database']['name'] );
 
 //Geoserver Configuration
 
 /**
 */
-define("GEO_HOST", "130.89.221.193");
-define("GEO_USER", "admin");
-define("GEO_PASSWORD", "geoserver");
-define("GEO_PORT", "85");
+define("GEO_HOST", $json['geoserver']['host']);
+define("GEO_USER", $json['geoserver']['user']);
+define("GEO_PASSWORD", $json['geoserver']['password']);
+define("GEO_PORT", $json['geoserver']['port']);
 
 //Email Configuration
 
 /**
 */
-define("EMAIL_HOST","root.server-ke47.com;root.server-ke47.com");
-define("USERNAME","robert@equatorwriters.com");
-define("PASSWORD","roba@3042");
-define("FROM_ADDRESS", "robert@equatorwriters.com");
-define("FROM_NAME","Robert Ohuru");
+define("EMAIL_HOST",$json['email']['host']);
+define("USERNAME",$json['email']['username']);
+define("PASSWORD",$json['email']['password']);
+define("FROM_ADDRESS", $json['email']['fromAddress']);
+define("FROM_NAME",$json['email']['fromName']);
+define("SMTPAuth",$json['email']['SMTPAuth']);
 
 ?>

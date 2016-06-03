@@ -1,0 +1,24 @@
+{
+    "database": {
+        "host":"130.89.221.193",
+        "port":5432,
+        "user":"postgres",
+        "password": 123,
+        "name":"maris_db"
+    },
+    "geoserver": {
+        "host":"130.89.221.193",
+        "port":85,
+        "user":"admin",
+        "password":"geoserver"
+    },
+    "email": {
+        "host":"root.server-ke47.com;root.server-ke47.com",
+        "port":"",
+        "username":"robert@equatorwriters.com",
+        "password":"roba@3042",
+        "fromAddress":"robert@equatorwriters.com",
+        "fromName":"Robert Ohuru",
+        "SMTPAuth":true
+    }
+}

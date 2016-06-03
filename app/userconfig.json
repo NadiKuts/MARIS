@@ -1,0 +1,12 @@
+{
+    "username": "",
+    "defaultjson": "WorkFlow.json",
+    "geoserver": {
+        "workspace": ""
+    },
+    "datafolder": {
+        "name": "",
+        "inputpath": "",
+        "outputpath": ""
+    }
+}
