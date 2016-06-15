@@ -1,86 +1,94 @@
-<div style="height:100%; padding-top: 0%; margin-left: 5%;margin-right: 5%;" ng-controller='workflowCtrl'>
-    <md-content style="height:100%;">
-        <ul class="nav nav-pills">
-            <li id="nav-nav" ng-repeat="subworkflow in subWFLarray" ng-class="{active:isSet(subworkflow.id)}" ng-init="createContent(0)"><a href ng-click="createContent(subworkflow.id); setTab(subworkflow.id);">{{subworkflow.metadata.longName}}</a></li>
-        </ul>
-        <div ng-controller="expandCollapseCtrl" id="wkf_tab_cont" class="md-padding">
-            <div flex="20" class="finalOutputs">
-                <div style="display:table-row; width:500px;">
-                    <div style="display:table-cell; width:250px;">
-                        <!--Data -->
-                        <div ng-click="showOutput(tree01.currentNode.name); bshow=true; showInputs(tree01.currentNode.name);" data-angular-treeview="true" data-tree-id="tree01" data-tree-model="tree" data-node-id="id" data-node-label="name" data-node-children="children">
+<div>
+    <div style="height:100%; padding-top: 0%; margin-left: 5%;margin-right: 5%;" ng-controller='workflowCtrl'>
+        <md-content style="height:100%;">
+            <ul class="nav nav-pills">
+                <li id="nav-nav" ng-repeat="subworkflow in subWFLarray" ng-class="{active:isSet(subworkflow.id)}" ng-init="createContent(0)"><a href ng-click="createContent(subworkflow.id); setTab(subworkflow.id);">{{subworkflow.metadata.longName}}</a></li>
+            </ul>
+            <div ng-controller="expandCollapseCtrl" id="wkf_tab_cont" class="md-padding">
+                <div flex="20" class="finalOutputs">
+                    <div style="display:table-row; width:500px;">
+                        <div style="display:table-cell; width:250px;">
+                            <!--Data -->
+                            <div ng-click="showOutput(tree01.currentNode.name); bshow=true; showInputs(tree01.currentNode.name);" data-angular-treeview="true" data-tree-id="tree01" data-tree-model="tree" data-node-id="id" data-node-label="name" data-node-children="children">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div flex="40" class="finalOutputs">
-                <md-button ng-show="bshow" class="md-raised md-primary menu-button">{{selectedName}}</md-button>
-                <openlayers ol-center="center" height="400px">
-                    <ol-layer ol-layer-properties="bounds"></ol-layer>
-                    <ol-layer ng-repeat="output in output_map" ol-layer-properties="output"></ol-layer>
-                    <ol-layer ng-repeat="landmark in landmarks|filter: { visible: true}" name="{{ landmark.name }}" ol-layer-properties="landmark"></ol-layer>
-                </openlayers>
-                <form style="padding: 0 10px 0 10px;" ng-repeat="landmark in landmarks">
-                    <div>
-                        <md-checkbox ng-model="landmark.visible" class="md-primary"> {{landmark.name}} </md-checkbox>
-                        <md-slider min="0" max="1" step="0.01" ng-model="landmark.opacity" class="md-primary"></md-slider>
-                    </div>
-                </form>
-            </div>
-
-            <div flex="40" class="finalOutputs_inputs" layout="column" layout-align="start center">
-                <div class="container" ng-repeat="inpm in inputs_maps">
-                    <md-button ng-click="showDetails = ! showDetails" class="md-raised md-primary menu-button">{{inpm.name}}</md-button>
-                    <openlayers ng-show="showDetails" ol-center="center" height="400px">
-                        <ol-layer ol-layer-properties="inpm"></ol-layer>
+                <div flex="40" class="finalOutputs">
+                    <md-button ng-show="bshow" class="md-raised md-primary menu-button">{{selectedName}}</md-button>
+                    <openlayers ol-center="center" height="400px">
+                        <ol-layer ol-layer-properties="bounds"></ol-layer>
+                        <ol-layer ng-repeat="output in output_map" ol-layer-properties="output"></ol-layer>
+                        <ol-layer ng-repeat="landmark in landmarks|filter: { visible: true}" name="{{ landmark.name }}" ol-layer-properties="landmark"></ol-layer>
                     </openlayers>
-                </div>
-                <div class="container" ng-repeat="inpv in inputs_values">
-                    <div>
-                        <md-button ng-click="showDetailsValue = ! showDetailsValue" class="md-raised md-primary menu-button">{{inpv.name}}</md-button>
-                        <br>
-                        <md-checkbox ng-show="showDetailsValue" ng-model="activeUser" ng-true-value="true" ng-false-value="false" class="md-raised md-primary">
-                            Active User: {{ activeUser }}
-                        </md-checkbox>
-                        <br>
-                        <div ng-show="showDetailsValue" flex="20" layout layout-align="center center">
-                            <input flex type="number" ng-model="inpv.value" ng-disabled="!activeUser" aria-label="blue" aria-controls="blue-slider">
+                    <form style="padding: 0 10px 0 10px;" ng-repeat="landmark in landmarks">
+                        <div>
+                            <md-checkbox ng-model="landmark.visible" class="md-primary"> {{landmark.name}} </md-checkbox>
+                            <md-slider min="0" max="1" step="0.01" ng-model="landmark.opacity" class="md-primary"></md-slider>
                         </div>
-                        <md-slider ng-show="showDetailsValue" min="{{inpv.min}}" max="{{inpv.max}}" ng-disabled="!activeUser" ng-model="inpv.value" aria-label="blue" id="blue-slider" class="md-primary">
-                        </md-slider>
+                    </form>
+                </div>
+
+                <div flex="40" class="finalOutputs_inputs" layout="column" layout-align="start center">
+                    <div class="container" ng-repeat="inpm in inputs_maps|filter: {visible:true}">
+                        <md-button ng-click="showDetails = ! showDetails" class="md-raised md-primary menu-button">{{inpm.name}}</md-button>
+                        <div ng-show="showDetails">
+                            <openlayers ol-center="center" height="400px">
+                                <ol-layer ol-layer-properties="inpm"></ol-layer>
+                            </openlayers>
+                            <div ng-show={{inpm.change}}>
+                                <md-content ng-controller="UploadCtrl" layout-padding layout="row" layout-align="start end">
+                                    <aps-upload-file id="uploadBox"></aps-upload-file>
+                                </md-content>
+                                <md-button id="submit" class="md-raised md-primary" ng-click="">Submit</md-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" ng-repeat="inpv in inputs_values">
+                        <div>
+                            <md-button ng-click="showDetailsValue = ! showDetailsValue" class="md-raised md-primary menu-button">{{inpv.name}}</md-button>
+                            <div ng-show="showDetailsValue">
+                                <div flex="20" layout layout-align="center center">
+                                    <input id="factor" flex type="number" ng-model="inpv.value" ng-disabled={{!inpv.change}} aria-label="blue" aria-controls="blue-slider">
+                                </div>
+                                <md-slider min="{{inpv.min}}" max="{{inpv.max}}" ng-disabled={{!inpv.change}} ng-model="inpv.value" aria-label="blue" id="blue-slider" class="md-primary">
+                                </md-slider>
+                                <md-button id="submit" ng-show={{inpv.change}} class="md-raised md-primary" ng-click="">Submit</md-button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </md-content>
-</div>
-<div ng-controller="DBCtrl" style="margin-left: 5%;margin-right: 5%;">
-    <md-button class="md-raised md-primary">Daily dry matter intake of grass</md-button>
-    <div class="animals">
-        <md-table-container>
-            <table md-table>
-                <thead md-head>
-                    <tr md-row>
-                        <th md-column>Species</th>
-                        <th md-column md-numeric>Life bodyweight(kg/animal)</th>
-                        <th md-column md-numeric>% Grass in diet (%/animal)</th>
-                        <th md-column md-numeric>DM grass requirement (kgDM/day)</th>
-                        <th md-column md-numeric>% Life bodyweight (%)</th>
-                    </tr>
-                </thead>
-                <tbody md-body>
-                    <tr md-row ng-repeat="row in tableRows">
-                        <td md-cell>{{row.species}}</td>
-                        <td md-cell>{{row.bodyweight}}</td>
-                        <td md-cell>{{row.grassindiet}}</td>
-                        <td md-cell>{{row.dm_grass}}</td>
-                        <td md-cell>{{row.procent_bodyweight}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </md-table-container>
+        </md-content>
     </div>
-</div>
-<div ng-controller="RESTgeo">
+    <div ng-controller="DBCtrl" style="margin-left: 5%;margin-right: 5%;">
+        <md-button class="md-raised md-primary">Daily dry matter intake of grass</md-button>
+        <div class="animals">
+            <md-table-container>
+                <table md-table>
+                    <thead md-head>
+                        <tr md-row>
+                            <th md-column>Species</th>
+                            <th md-column md-numeric>Life bodyweight(kg/animal)</th>
+                            <th md-column md-numeric>% Grass in diet (%/animal)</th>
+                            <th md-column md-numeric>DM grass requirement (kgDM/day)</th>
+                            <th md-column md-numeric>% Life bodyweight (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody md-body>
+                        <tr md-row ng-repeat="row in tableRows">
+                            <td md-cell>{{row.species}}</td>
+                            <td md-cell>{{row.bodyweight}}</td>
+                            <td md-cell>{{row.grassindiet}}</td>
+                            <td md-cell>{{row.dm_grass}}</td>
+                            <td md-cell>{{row.procent_bodyweight}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-table-container>
+        </div>
+    </div>
+    <div ng-controller="RESTgeo">
+    </div>
 </div>
