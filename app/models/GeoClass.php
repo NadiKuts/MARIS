@@ -179,7 +179,37 @@ class GeoClass {
         $data = "file:///".$file;
 
         if ($data != '') {
+            
             curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: text/plain", 'Content-Length: ' . strlen($data)));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: text/plain", 'Content-Length: ' . strlen($data)));
+        }
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $rslt = curl_exec($ch);
+        $info = curl_getinfo($ch);
+        curl_close($ch); // free resources if curl handle will not be reused
+        fclose($logfh); 
+        return $rslt;
+    }
+    function addLayerFromGeoTiff($workspace, $storename, $file) {
+        $logfh = fopen("GeoserverPHP.log", 'w') or die("can't open log file");
+        fwrite($logfh, "Started" . "\n");
+        $ch = curl_init();
+        //curl_setopt($ch, CURLOPT_URL, "http://localhost:8080/geoserver/rest/workspaces/Kenya/datastores/Area/external.shp");
+
+        curl_setopt($ch, CURLOPT_URL, "http://".GEO_HOST.":".GEO_PORT."/geoserver/rest/workspaces/".$workspace."/datastores/".$storename."/external.shp");
+        
+        curl_setopt($ch, CURLOPT_STDERR, $logfh); // logs curl messages
+
+        curl_setopt($ch, CURLOPT_USERPWD, GEO_USER.":".GEO_PASSWORD);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+
+        //$data = "file:///C:/Users/Robert/Documents/MaMaSe/mamase/area/shape/Boundaries_Mamase.shp";
+        $data = "file:///".$file;
+
+        if ($data != '') {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/tiff", 'Content-Length: ' . strlen($data)));
         }
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_HEADER, false);

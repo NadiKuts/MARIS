@@ -5,16 +5,23 @@ controllers.controller('DBCtrl', ['$scope', '$http', function ($scope, $http) {
     // controller code goes here
     // Get data from table
     $scope.data = [];
-    $http.get('http://localhost:3000/api/v1/statictables')
+    $http.post("models/animals.php").success(function (response) {
+        if(response == 0){
+                 
+        }else{
+            $scope.tableRows = response;
+        }
+    });
+    /*$http.get('http://localhost:3000/api/v1/statictables')
         .success(function (data) {
             $scope.tableRows = data;
         })
         .error(function (error) {
             console.log('Error: ' + error);
-        });
+        });*/
 }]);
 
-controllers.controller('RESTgeo', ['$scope', '$http', 'workspaces', function ($scope, $http, workspaces) {
+/*controllers.controller('RESTgeo', ['$scope', '$http', 'workspaces', function ($scope, $http, workspaces) {
     workspaces.getWorkspaces().success(function (data) {
         console.log(data);
     });
@@ -23,7 +30,7 @@ controllers.controller('RESTgeo', ['$scope', '$http', 'workspaces', function ($s
         console.log(data);
     });
 
-}]);
+}]);*/
 
 
 

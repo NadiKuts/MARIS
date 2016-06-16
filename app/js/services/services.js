@@ -41,7 +41,7 @@ controllers.factory('ModelData', function($http) {
 
 
 /*REST API GEOSERVER*/
-controllers.value('geoServer', 'http://admin:geoserver@130.89.221.193:85/geoserver/rest/workspaces')
+/*controllers.value('geoServer', 'http://admin:geoserver@130.89.221.193:85/geoserver/rest/workspaces')
 
 controllers.factory('workspaces', ['$http', 'geoServer', function ($http, geoServer) {
     var workspaces = {};
@@ -54,7 +54,7 @@ controllers.factory('workspaces', ['$http', 'geoServer', function ($http, geoSer
         return $http.get(geoServer + '/' + name);
     };
     return workspaces;
-}]);
+}]);*/
 
 /*controllers.factory('AnimalTable', function ($http) {
     // controller code goes here
