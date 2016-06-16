@@ -5,7 +5,7 @@ controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 
         /* Counting the number of subworkflows, number of operations of each subworkflow */
         $scope.subWFLarray = data.workflows;
         $scope.subWFLcount = $scope.subWFLarray.length;
-        
+
         $scope.tab = 0;
         $scope.setTab = function (sbwf_id) {
             $scope.tab = sbwf_id;
@@ -13,27 +13,27 @@ controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 
         $scope.isSet = function (sbwf_id) {
             return $scope.tab === sbwf_id;
         };
-        
-                
+
+
         /* Create initial content - outputs of final operations */
         $scope.createContent = function (sbwf_id) {
 
             /* create array for future work - it will be in separate function */
             var currConn = [];
-            
+
             $scope.conn = $scope.subWFLarray[sbwf_id].connections;
             /* operCount - is a number of all operations in this subworkflow */
             $scope.oper = $scope.subWFLarray[sbwf_id].operations;
             $scope.oper_length = $scope.oper.length;
-            for(var i = 0; i<$scope.oper_length; i++) {
+            for (var i = 0; i < $scope.oper_length; i++) {
                 $scope.oper[i].connections = [];
-                for (var j=0; j<$scope.conn.length; j++) {
+                for (var j = 0; j < $scope.conn.length; j++) {
                     if ($scope.oper[i].id == $scope.conn[j].toOperationId) {
                         $scope.oper[i].connections.push($scope.conn[j]);
                     }
                 }
             }
-            console.log($scope.oper);
+            //console.log($scope.oper);
 
 
             ///Make a tree
@@ -118,7 +118,7 @@ controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 
 
         $scope.showOutput = function (tree) {
             $scope.selectedName = tree;
-            console.log($scope.selectedName);
+            //console.log($scope.selectedName);
 
             for (var i = 0; i < $scope.oper.length; i++) {
                 if ($scope.selectedName == $scope.oper[i].outputs[0].name) {
@@ -182,8 +182,8 @@ controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 
             };
             $scope.activeUser = false;
 
-            console.log($scope.inputs_maps);
-            console.log($scope.inputs_values);
+            //console.log($scope.inputs_maps);
+            //console.log($scope.inputs_values);
         };
     });
 
@@ -241,4 +241,4 @@ controllers.controller('workflowCtrl', ['$scope', '$log', '$http', 'ModelData', 
 controllers.controller('expandCollapseCtrl', function ($scope) {
     $scope.active = true;
     $scope.active1 = true;
-}); 
+});
